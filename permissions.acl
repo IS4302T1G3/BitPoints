@@ -13,3 +13,69 @@ rule NetworkAdminSystem {
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }
+
+/*
+*ACLs for Bitpoint_Admin
+*/
+
+rule BitPointAdmin {
+    description: "Allow bitPointAdmin full access to everything"
+    participant: "org.acme.BitPoint.Bitpoint_Admin"
+    operation: ALL
+    resource: "org.acme.BitPoint.*"
+    action: ALLOW
+}
+
+/*
+*ACLs for Merchant
+*/
+
+rule MerchantCanCreateReward{
+  description: "Merchant can create rewards for own rewardlist"
+  participant(m): "org.acme.BitPoint.Merchant"
+  operation: CREATE,UPDATE
+  resource(r): "org.acme.BitPoint.Reward"
+  condition: (m.getIdentifier() == r.merchant.getIdentifier())
+  action: ALLOW
+}
+
+rule MerchantCanDeleteReward{
+  description: "Merchant can delete rewards from own rewardlist"
+  participant(m): "org.acme.BitPoint.Merchant"
+  operation: DELETE,UPDATE
+  resource(r): "org.acme.BitPoint.Reward"
+  condition: (m.getIdentifier() == r.merchant.getIdentifier())
+  action: ALLOW
+}
+
+
+rule MerchantCanIssuePoint{
+	description: "Merchant can issue bitpoints to member"
+  	participant(m):"org.acme.BitPoint.Merchant"
+  	operation: ALL
+    resource(r):"org.acme.BitPoint.Wallet"
+    transaction(t): "org.acme.BitPoint.merchantIssuePoints"
+  	condition: (r.getIdentifier() != NULL)
+  	action: ALLOW
+  
+}
+
+
+rule MemberCanRedeemRewards{
+	description: "Member can redeem rewards from merchant rewards list"
+  	participant(m): "org.acme.BitPoint.Member"
+  	operation:ALL
+    resource(r): "org.acme.BitPoint.Reward"
+  	transaction(t): "org.acme.BitPoint.memberRedeemRewards"
+  	condition: (r.getIdentifier() != NULL)
+  	action: ALLOW
+}
+
+rule MemberCanAccessOwnBitWallet{
+	description: "Member can view their own wallet"
+  	participant(m): "org.acme.BitPoint.Member"
+  	operation: READ,UPDATE 
+  	resource(r): "org.acme.BitPoint.Bitwallet"
+  	condition: (m.getIdentifier() == r.owner.getIdentifier())
+  	action: ALLOW
+}
