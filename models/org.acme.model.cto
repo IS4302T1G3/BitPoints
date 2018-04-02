@@ -1,0 +1,105 @@
+/**
+ * Bitpoint model file
+ */
+
+namespace org.acme.BitPoint
+//assets
+abstract asset Wallet identified by walletId {
+	o String walletId
+  	o Double pointBalance
+}
+
+asset Bitwallet extends Wallet{
+  	--> Member owner
+}
+
+asset Reward identified by rewardsId{
+	o String rewardsId
+	o String name
+	o String description
+	o Double pointsAmount
+	o String StartDate
+	o Integer Quantity
+	--> Merchant merchant
+}
+
+asset RewardsList extends Wallet{
+	--> Reward [] rewards
+	--> Merchant owner
+}
+
+//participants
+abstract participant User identified by email{
+	o String email
+	o String firstName
+	o String lastName
+	o String contactNumber
+	o String Address
+}
+
+participant Bitpoint_Admin extends User{
+
+}
+
+participant Member extends User{
+	o String MemberId
+}
+
+participant Merchant extends User{
+	o String CompanyName
+	o String MerchantId
+}
+
+//transactions
+transaction adminAddMember{
+	o String email
+	o String firstName
+	o String lastName
+	o String contactNumber
+	o String address
+	o Bitwallet wallet
+}
+
+transaction adminAddMerchant{
+	o String companyName
+	o String merchantId
+	o RewardsList list
+}
+
+transaction adminAddPoints{
+	o Integer points
+	-->Bitwallet wallet
+}
+
+transaction adminDeleteAsset{
+//Delete stuff
+}
+
+transaction merchantCreateReward{
+	o String rewardsId
+	o String name
+	o String description
+	o Double pointsAmount
+	o String startDate
+	o String expiryDate
+	o Integer quantity
+	-->RewardsList list
+}
+
+transaction merchantDeleteReward{
+	o Reward rewardID
+	-->RewardsList list
+}
+
+transaction merchantIssuePoints{
+	o Integer points
+	o String walletId
+	--> Bitwallet walletToReceive
+}
+
+transaction userRedeemRewards{
+	o Integer points
+	o String walletId
+	--> Reward rewards
+	--> Bitwallet wallet
+}
