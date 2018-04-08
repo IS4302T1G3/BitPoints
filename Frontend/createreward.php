@@ -40,7 +40,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "http://localhost:3000/api/org.acme.BitPoint.Reward"); 
 curl_setopt($ch, CURLOPT_POST,1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json' , 'Accept: application/json'));
-$data= array("\$class" => "org.acme.BitPoint.Reward", "rewardsId" => $rewardsId, "name" => $name, "description" => $description, "pointAmount" => $pointAmount, "startDate"=>$startDate, "quantity"=> $quantity, "merchant"=> $merchantId);
+$data= array("\$class" => "org.acme.BitPoint.Reward", "rewardsId" => $rewardsId, "name" => $name, "description" => $description, "pointsAmount" => $pointAmount, "startDate"=>$startDate, "quantity"=> $quantity, "merchant"=> $merchantId);
 $data_string=json_encode($data);
 curl_setopt($ch, CURLOPT_POSTFIELDS,$data_string);
 

@@ -11,8 +11,6 @@ table, th, td {
 <?php
 session_start();
 
-$email = $_SESSION['email'];
-
 
 
 $ch = curl_init('http://localhost:3000/api/org.acme.BitPoint.Reward?');
@@ -45,7 +43,6 @@ $reward = json_decode($result, true);
 	<th>Quantity</th>
  </tr>
  <?php foreach($reward as $i){  ?>
- <?php if(strpos($i['merchant'], $email) !== false ){  ?>
  <tr>
  	<th><?php echo $i['rewardsId']; ?></th>
  	<th><?php echo $i['name']; ?></th>
@@ -54,7 +51,7 @@ $reward = json_decode($result, true);
  	<th><?php echo $i['startDate']; ?></th>
  	<th><?php echo $i['quantity']; ?></th>
  </tr>	
- <?php } }?>
+ <?php }?>
 
 </table>	
 

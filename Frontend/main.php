@@ -28,8 +28,9 @@ What would you like to do?<br><br>
 
 <?php if($_SESSION['role'] == 'user') { ?>
 
-<a href="#">View All Rewards</a><br>
+<a href="memberViewAllRewards.php">View All Rewards</a><br>
 <a href="#">Redeem Rewards</a><br>
+<a href="./userView.php">View account details</a>
 
 <?php } ?>
 
@@ -38,8 +39,7 @@ What would you like to do?<br><br>
 
 <a href="viewAllRewards.php">List all Rewards</a><br>
 <a href="addRewards.php">Add Rewards</a><br>
-<a href="#">Delete Rewards</a><br>
-<a href="#">Update Rewards</a><br>
+<a href="getReward.php">Manage Rewards</a><br>
 <a href="#">Add points for Member</a><br>
 
 <?php } ?>
