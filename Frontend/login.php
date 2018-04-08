@@ -64,6 +64,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];
                 $retry = false;
+				header("Location:./main.php");
             } else {
                 echo "Invalid email and password combination.";
                 $retry = true;
