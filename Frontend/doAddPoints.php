@@ -1,12 +1,11 @@
 <?php
-
-
 session_start();
 
-$rewardID = $_POST['rewardId'];
-$email = $_SESSION['email'];
+$memberId = $_POST['memberId'];
+$points = $_POST['points'];
 
-$ch = curl_init('http://localhost:3000/api/org.acme.BitPoint.memberRedeemRewards');
+
+$ch = curl_init('http://localhost:3000/api/org.acme.BitPoint.adminUpdatePoints');
 
 //curl to send http post
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -17,11 +16,8 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Accept: application/json'
     )); 
 
-
-//set data for json
-$data = array("\$class" => "org.acme.BitPoint.memberRedeemRewards", "rewards" => "resource:org.acme.BitPoint.Reward#".$rewardID,
-				"wallet" => $email);
-
+ //set data for json
+$data = array("\$class" => "org.acme.BitPoint.adminUpdatePoints", "points" => (int) $points, "wallet" => $memberId);
 //encode into json format
 $data_string = json_encode($data);
 
@@ -30,6 +26,8 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 
 $result = curl_exec($ch);
 
-header("Location:./redeemRewards.php");
+
+
+header("Location: adminAddPoints.php");
 
 ?>
