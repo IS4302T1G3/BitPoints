@@ -116,10 +116,10 @@ function merchantUpdatePoints(merchantUpdatePoints) {
 
 /**
  * User redeem rewards
- * @param {org.acme.BitPoint.userRedeemRewards} userRedeemRewards - User redeem rewards
+ * @param {org.acme.BitPoint.memberRedeemRewards} memberRedeemRewards - Member redeem rewards
  * @transaction
  */
-function userRedeemRewards(redeem) {
+function memberRedeemRewards(redeem) {
 	var targetWallet = redeem.wallet;
 	var selectedReward = redeem.rewards;
 	

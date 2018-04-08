@@ -78,7 +78,7 @@ transaction merchantUpdatePoints{
 	-->Bitwallet wallet
 }
 
-transaction userRedeemRewards{
+transaction memberRedeemRewards{
 	--> Reward rewards
 	--> Bitwallet wallet
 }
