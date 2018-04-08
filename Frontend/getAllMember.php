@@ -41,12 +41,12 @@ $member = json_decode($result, true);
  </tr>
  <?php foreach($member as $i){  ?>
  <tr>
- 	<th><?php echo $i['MemberId']; ?></th>
+ 	<th><?php echo $i['memberId']; ?></th>
  	<th><?php echo $i['email']; ?></th>
  	<th><?php echo $i['firstName']; ?></th>
  	<th><?php echo $i['lastName']; ?></th>
  	<th><?php echo $i['contactNumber']; ?></th>
- 	<th><?php echo $i['Address']; ?></th>
+ 	<th><?php echo $i['address']; ?></th>
  </tr>	
  <?php } ?>
 

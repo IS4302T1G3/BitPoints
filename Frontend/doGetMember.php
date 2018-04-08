@@ -29,7 +29,7 @@ $member = json_decode($result, true);
 
 <form action="doUpdateMember.php" method ="POST">
   Member ID:
-  <input type="text" name="memberId" value=<?php echo $member['MemberId'] ?> >
+  <input type="text" name="memberId" value=<?php echo $member['memberId'] ?> >
   <br>
   
   Email:
@@ -49,7 +49,7 @@ $member = json_decode($result, true);
   <br>
 
   Address:
-  <input type="text" name="address" value=<?php echo $member['Address'] ?> >
+  <input type="text" name="address" value=<?php echo $member['address'] ?> >
   <br>
 
   <br><br>

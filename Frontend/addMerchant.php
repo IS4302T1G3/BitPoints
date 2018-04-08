@@ -6,7 +6,7 @@
 session_start();
 ?>
 
-<h2>Add Member</h2>
+<h2>Add Merchant</h2>
 
 <form action="admincreatemerchant.php" method ="POST">
   Company Name:

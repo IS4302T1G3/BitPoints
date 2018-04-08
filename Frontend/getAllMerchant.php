@@ -42,13 +42,13 @@ $member = json_decode($result, true);
  </tr>
  <?php foreach($member as $i){  ?>
  <tr>
- 	<th><?php echo $i['CompanyName']; ?></th>
- 	<th><?php echo $i['MerchantId']; ?></th>
+ 	<th><?php echo $i['companyName']; ?></th>
+ 	<th><?php echo $i['merchantId']; ?></th>
  	<th><?php echo $i['email']; ?></th>
  	<th><?php echo $i['firstName']; ?></th>
  	<th><?php echo $i['lastName']; ?></th>
  	<th><?php echo $i['contactNumber']; ?></th>
- 	<th><?php echo $i['Address']; ?></th>
+ 	<th><?php echo $i['address']; ?></th>
  </tr>	
  <?php } ?>
 
