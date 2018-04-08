@@ -19,7 +19,7 @@ What would you like to do?<br><br>
 <a href="addMember.php">Add a new member</a><br><br>
 <a href="getAllMerchant.php">View All Merchants</a><br>
 <a href="addMerchant.php">Add a new merchant</a><br><br>
-<a href="#">Add points for member</a><br>
+<a href="adminAddPoints.php">Add points for member</a><br>
 <a href="getMember.php">Update Member particulars</a><br>
 <a href="getMerchant.php">Update Merchant particulars</a><br>
 
@@ -40,7 +40,7 @@ What would you like to do?<br><br>
 <a href="viewAllRewards.php">List all Rewards</a><br>
 <a href="addRewards.php">Add Rewards</a><br>
 <a href="getReward.php">Manage Rewards</a><br>
-<a href="#">Add points for Member</a><br>
+<a href="adminAddPoints.php">Add points for Member</a><br>
 
 <?php } ?>
 

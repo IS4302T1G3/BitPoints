@@ -79,5 +79,7 @@ $ch = curl_init('http://localhost:3000/api/org.acme.BitPoint.BitWallet/'.$email)
 <input type="submit" value="Submit">
 </form>
 
+<a href="./main.php">Back to Main page</a><br>
+
 </body>
 </html>
