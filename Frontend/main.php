@@ -30,6 +30,7 @@ What would you like to do?<br><br>
 
 <a href="memberViewAllRewards.php">View All Rewards</a><br>
 <a href="#">Redeem Rewards</a><br>
+<a href="./userView.php">View account details</a>
 
 <?php } ?>
 
