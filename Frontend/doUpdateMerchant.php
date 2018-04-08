@@ -20,9 +20,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     )); 
 
 //set data for json
-$data = array("\$class" => "org.acme.BitPoint.Merchant","CompanyName" => $companyName, "MerchantId" => $merchantId,
+$data = array("\$class" => "org.acme.BitPoint.Merchant","companyName" => $companyName, "merchantId" => $merchantId,
 				"email" => $email, "firstName" => $firstName, "lastName" => $lastName,
-				"contactNumber" => $contactNumber , "Address" => $address);
+				"contactNumber" => $contactNumber , "address" => $address);
 
 //encode into json format
 $data_string = json_encode($data);

@@ -29,11 +29,11 @@ $member = json_decode($result, true);
 
 <form action="doUpdateMerchant.php" method ="POST">
   Company Name:
-  <input type="text" name="companyName" value=<?php echo $member['CompanyName'] ?> >
+  <input type="text" name="companyName" value=<?php echo $member['companyName'] ?> >
   <br>
 
   Member ID:
-  <input type="text" name="merchantId" value=<?php echo $member['MerchantId'] ?> >
+  <input type="text" name="merchantId" value=<?php echo $member['merchantId'] ?> >
   <br>
   
   Email:
@@ -53,7 +53,7 @@ $member = json_decode($result, true);
   <br>
 
   Address:
-  <input type="text" name="address" value=<?php echo $member['Address'] ?> >
+  <input type="text" name="address" value=<?php echo $member['address'] ?> >
   <br>
 
   <br><br>
