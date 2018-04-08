@@ -1,7 +1,6 @@
 <?php
 
-$companyName = $_POST['companyName'];
-$memberId = $_POST['merchantId'];
+$memberId = $_POST['memberId'];
 $email = $_POST['email'];
 $firstName = $_POST['firstname'];
 $lastName = $_POST['lastname'];
@@ -9,10 +8,9 @@ $contactNumber = $_POST['contactNumber'];
 $address = $_POST['address'];
 
 
-$ch = curl_init('http://localhost:3000/api/org.acme.BitPoint.Merchant');
+$ch = curl_init('http://localhost:3000/api/org.acme.BitPoint.Member/'.$email);
 
-//curl to send http post
-curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 
 // set header
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -21,7 +19,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     )); 
 
 //set data for json
-$data = array("\$class" => "org.acme.BitPoint.Merchant", "CompanyName" => $companyName,"MerchantId" => $memberId,
+$data = array("\$class" => "org.acme.BitPoint.Member", "MemberId" => $memberId,
 				"email" => $email, "firstName" => $firstName, "lastName" => $lastName,
 				"contactNumber" => $contactNumber , "Address" => $address);
 
@@ -33,9 +31,8 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 
 $result = curl_exec($ch);
 
-header("Location: main.php");
+
+header("Location: getMember.php");
 
 
 ?>
-
- 
