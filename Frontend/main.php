@@ -29,7 +29,7 @@ What would you like to do?<br><br>
 <?php if($_SESSION['role'] == 'user') { ?>
 
 <a href="memberViewAllRewards.php">View All Rewards</a><br>
-<a href="#">Redeem Rewards</a><br>
+<a href="redeemRewards.php">Redeem Rewards</a><br>
 <a href="./userView.php">View account details</a>
 
 <?php } ?>
