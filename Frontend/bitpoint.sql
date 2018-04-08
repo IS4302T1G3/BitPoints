@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 08, 2018 at 04:34 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Host: 127.0.0.1
+-- Generation Time: Apr 02, 2018 at 07:03 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,18 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `login` (
   `email` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `role` varchar(8) NOT NULL
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`email`, `password`, `role`) VALUES
-('admin1@gmail.com', 'password', 'admin'),
-('merchant1@gmail.com', 'password', 'merchant'),
-('user1@gmai.com', 'password', 'user');
 
 --
 -- Indexes for dumped tables
