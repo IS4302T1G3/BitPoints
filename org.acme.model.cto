@@ -18,8 +18,9 @@ asset Reward identified by rewardsId{
 	o String name
 	o String description
 	o Double pointsAmount
-	o String StartDate
-	o Integer Quantity
+	o String startDate
+    o String expiryDate
+	o Integer quantity
 	--> Merchant merchant
 }
 
@@ -34,7 +35,7 @@ abstract participant User identified by email{
 	o String firstName
 	o String lastName
 	o String contactNumber
-	o String Address
+	o String address
 }
 
 participant Bitpoint_Admin extends User{
@@ -42,37 +43,18 @@ participant Bitpoint_Admin extends User{
 }
 
 participant Member extends User{
-	o String MemberId
+	o String memberId
 }
 
 participant Merchant extends User{
-	o String CompanyName
-	o String MerchantId
+	o String companyName
+	o String merchantId
 }
 
 //transactions
-transaction adminAddMember{
-	o String email
-	o String firstName
-	o String lastName
-	o String contactNumber
-	o String address
-	o Bitwallet wallet
-}
-
-transaction adminAddMerchant{
-	o String companyName
-	o String merchantId
-	o RewardsList list
-}
-
-transaction adminAddPoints{
+transaction adminUpdatePoints{
 	o Integer points
 	-->Bitwallet wallet
-}
-
-transaction adminDeleteAsset{
-//Delete stuff
 }
 
 transaction merchantCreateReward{
@@ -81,25 +63,22 @@ transaction merchantCreateReward{
 	o String description
 	o Double pointsAmount
 	o String startDate
-	o String expiryDate
+    o String expiryDate
 	o Integer quantity
 	-->RewardsList list
 }
 
 transaction merchantDeleteReward{
-	o Reward rewardID
-	-->RewardsList list
+	--> Reward reward
+	--> RewardsList list
 }
 
-transaction merchantIssuePoints{
+transaction merchantUpdatePoints{
 	o Integer points
-	o String walletId
-	--> Bitwallet walletToReceive
+	-->Bitwallet wallet
 }
 
 transaction userRedeemRewards{
-	o Integer points
-	o String walletId
 	--> Reward rewards
 	--> Bitwallet wallet
 }
