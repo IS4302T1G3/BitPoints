@@ -28,15 +28,19 @@ if(isset($_SESSION)){
 	$result2 = curl_exec($ch);
 	$wallet = json_decode($result2, true);
 	
-	echo '<br>Member ID: '.$member['MemberId'].'.<br>';
+	echo '<br>Member ID: '.$member['memberId'].'.<br>';
 	echo 'Points Remaining: '.$wallet['pointBalance'];
-	
-	
-	
+
+
+		
 }else{
 echo "Please login to view this page";
 echo '<a href="./login.php">';
 }
 ?>
+
+<br><br>
+<a href="main.php">Back to Main page</a><br>
+
 </body>
 </html>
