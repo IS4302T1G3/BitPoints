@@ -32,6 +32,7 @@ if (!isset($retry) || $retry) {
         </fieldset>
     ';
 }
+
 ?>
 <?php
 require 'connect.php';
@@ -50,7 +51,7 @@ if (isset($_POST['login'])) {
         // Calculate password_hash (SHA256 to the original password)
         //$password_hash = hash('sha256', $password);
 
-        $sql_select_user = "SELECT email FROM users WHERE email='$email' AND password='$password'";
+        $sql_select_user = "SELECT * FROM login WHERE email='$email' AND password='$password'";
 
         // Check for sql error
         if ($result = $conn->query($sql_select_user)) {
@@ -61,7 +62,7 @@ if (isset($_POST['login'])) {
                 // Login successful, initialize session information
                 session_start();
                 $_SESSION['email'] = $row['email'];
-
+                $_SESSION['role'] = $row['role'];
                 $retry = false;
             } else {
                 echo "Invalid email and password combination.";
