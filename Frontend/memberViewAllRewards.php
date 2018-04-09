@@ -28,14 +28,33 @@ $result = curl_exec($ch);
 
 $reward = json_decode($result, true);
 
+//print_r($reward);
+
+
+$ch2 = curl_init('http://localhost:3000/api/org.acme.BitPoint.Merchant');
+
+curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Accept: application/json'
+    )); 
+
+//return the transfer as a string of the return value of curl_exec() instead of outputting it out directly.
+curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true); 
+
+$result2 = curl_exec($ch2);
+
+$merchant = json_decode($result2, true);
+
+//print_r($merchant);
 
 ?>
 
 
-<h2> All Rewards Created by you </h2>
+<h2> All Rewards Available</h2>
 <table>
  <tr>
 	<th>Rewards ID</th>
+	<th>Merchant</th>
 	<th>Name</th>
 	<th>Description</th>
 	<th>Points Amount</th>
@@ -45,6 +64,7 @@ $reward = json_decode($result, true);
  <?php foreach($reward as $i){  ?>
  <tr>
  	<th><?php echo $i['rewardsId']; ?></th>
+ 	<th><?php foreach($merchant as $j) { if(strpos($i['merchant'], $j['email']) !== false){ echo $j['companyName'];}}?></th>
  	<th><?php echo $i['name']; ?></th>
  	<th><?php echo $i['description']; ?></th>
  	<th><?php echo $i['pointsAmount']; ?></th>
