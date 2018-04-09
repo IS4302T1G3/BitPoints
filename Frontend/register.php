@@ -5,6 +5,7 @@ require 'connect.php';
 if (isset($_POST['register'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+	$role=mysqli_real_escape_string($conn, $_POST['role']);
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
     $error_message = "";
@@ -26,7 +27,7 @@ if (isset($_POST['register'])) {
         //$password_hash = hash('sha256', $password);
 
         // Insert new user into db
-        $sql_insert_user = "INSERT INTO login (email, password) VALUES ('$email', '$password')";
+        $sql_insert_user = "INSERT INTO login (email, password, role) VALUES ('$email', '$password', $role)";
 
         // Check for sql error
         if ($conn->query($sql_insert_user)) {
@@ -65,6 +66,13 @@ if (!isset($retry) || $retry) {
                         <td>Re-enter Password:</td>
                         <td><input class="form-control" id="name" type="password" name = "confirm_password"></td>
                     </tr>
+					<tr>
+						<td>Account Type:<select>
+							<option>user</option>
+							<option>merchant</options>
+						</select>
+						</td>
+					</tr>
                     <tr>
                         <td colspan=2 align="right"><br> <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit" name="register" value="Register">Register</button></td>
                     </tr>
