@@ -49,12 +49,12 @@ rule MerchantCanDeleteReward{
 }
 
 
-rule MerchantCanIssuePoint{
+rule MerchantCanUpdatePoint{
 	description: "Merchant can issue bitpoints to member"
   	participant(m):"org.acme.BitPoint.Merchant"
   	operation: ALL
     resource(r):"org.acme.BitPoint.Wallet"
-    transaction(t): "org.acme.BitPoint.merchantIssuePoints"
+    transaction(t): "org.acme.BitPoint.merchantUpdatePoints"
   	condition: (r.getIdentifier() != NULL)
   	action: ALLOW
   
